@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductsSlider extends StatelessWidget {
   String mainText;
@@ -44,7 +45,7 @@ class ProductsSlider extends StatelessWidget {
                         children: <Widget>[
                           SizedBox(
                             child: Container(
-                              child: Image.asset("images/petfood/오리지날 독.png"),
+                              child: Image.asset("images/petfood/$i.png"),
                             ),
                             height: 220,
                             width: 220,

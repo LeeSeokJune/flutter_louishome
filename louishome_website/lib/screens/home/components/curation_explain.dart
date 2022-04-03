@@ -29,9 +29,9 @@ class CurationExplain extends StatelessWidget {
               SizedBox(height: 20),
               checkRoundText('사료 정기 구독 고객, 전 제품 5% 적립'),
               SizedBox(height: 20),
-              checkRoundText('사료 정기 구독 고객, 전 제품 5% 적립'),
+              checkRoundText('정기배송 상품 배송비 무료'),
               SizedBox(height: 20),
-              checkRoundText('사료 정기 구독 고객, 전 제품 5% 적립'),
+              checkRoundText('수수료 없이 사료 교체 및 구독 취소'),
             ],
           ),
           Image.asset(
