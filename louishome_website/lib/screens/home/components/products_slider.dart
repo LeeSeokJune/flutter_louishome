@@ -38,30 +38,34 @@ class ProductsSlider extends StatelessWidget {
                 return Wrap(
                   runSpacing: 6.0,
                   children: [0, 1, 2, 3, 4, 5].map((i) {
-                    return SizedBox(
-                      width: 220,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          SizedBox(
-                            child: Container(
-                              child: Image.asset("images/petfood/$i.png"),
-                            ),
-                            height: 220,
-                            width: 220,
+                    return InkWell(
+                        child: SizedBox(
+                          width: 220,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              SizedBox(
+                                child: Container(
+                                  child: Image.asset("images/petfood/$i.png"),
+                                ),
+                                height: 220,
+                                width: 220,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 6.0),
+                                child: Column(
+                                  children: [
+                                    Text("아이템 이름"),
+                                    Text('가격'),
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 6.0),
-                            child: Column(
-                              children: [
-                                Text("아이템 이름"),
-                                Text('가격'),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    );
+                        ),
+                        onTap: () {
+                          Get.toNamed('/product/$i');
+                        });
                   }).toList(),
                 );
               },

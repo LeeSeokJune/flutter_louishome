@@ -68,10 +68,15 @@ class MainAppBar extends StatelessWidget {
             child: Row(
               children: [
                 SizedBox(width: 40),
-                Image.asset(
-                  'images/png/루이스홈_sg2_color.png',
-                  width: 200,
-                  height: 50,
+                InkWell(
+                  child: Image.asset(
+                    'images/png/루이스홈_sg2_color.png',
+                    width: 200,
+                    height: 50,
+                  ),
+                  onTap: () {
+                    Get.toNamed('/');
+                  },
                 ),
               ],
             ),
