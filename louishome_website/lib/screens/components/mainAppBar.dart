@@ -39,25 +39,27 @@ class MainAppBar extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-          child: Container(
-            width: 1320,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                CustomTextButton('NOTICE'),
-                SizedBox(width: 15),
-                Container(height: 10, width: 1, color: Colors.grey),
-                SizedBox(width: 15),
-                CustomTextButton('장바구니'),
-                SizedBox(width: 15),
-                Container(height: 10, width: 1, color: Colors.grey),
-                SizedBox(width: 15),
-                CustomTextButton('로그인'),
-                SizedBox(width: 15),
-                Container(height: 10, width: 1, color: Colors.grey),
-                SizedBox(width: 15),
-                CustomTextButton('회원가입'),
-              ],
+          child: Center(
+            child: Container(
+              width: 1320,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  CustomTextButton('NOTICE'),
+                  SizedBox(width: 15),
+                  Container(height: 10, width: 1, color: Colors.grey),
+                  SizedBox(width: 15),
+                  CustomTextButton('장바구니'),
+                  SizedBox(width: 15),
+                  Container(height: 10, width: 1, color: Colors.grey),
+                  SizedBox(width: 15),
+                  CustomTextButton('로그인'),
+                  SizedBox(width: 15),
+                  Container(height: 10, width: 1, color: Colors.grey),
+                  SizedBox(width: 15),
+                  CustomTextButton('회원가입'),
+                ],
+              ),
             ),
           ),
         ),
@@ -98,7 +100,11 @@ class MainAppBar extends StatelessWidget {
           fontSize: 13,
         ),
       ),
-      onTap: () {},
+      onTap: () {
+        if (text == '장바구니') {
+          Get.toNamed('/shopping_cart');
+        }
+      },
     );
   }
 
@@ -109,12 +115,27 @@ class MainAppBar extends StatelessWidget {
         children: [
           SizedBox(width: 50),
           InkWell(
-            child: Icon(
-              Icons.menu,
-              size: 30,
-              color: Color.fromRGBO(0, 36, 79, 1),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.menu,
+                  size: 30,
+                  color: Color.fromRGBO(0, 36, 79, 1),
+                ),
+                Text(
+                  '카테고리',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
             ),
             onTap: () {},
+            onHover: (value) {
+              print(value.toString());
+            },
           ),
           SizedBox(width: 50),
           CategoryButton('강아지'),
@@ -122,8 +143,9 @@ class MainAppBar extends StatelessWidget {
           CategoryButton('베스트'),
           CategoryButton('신상품'),
           CategoryButton('특가'),
-          CategoryButton('루이Pick'),
-          SizedBox(width: 120),
+          CategoryButton('스타터'),
+          CategoryButton('루이존'),
+          SizedBox(width: 90),
           Container(
             width: 350,
             height: 30,
@@ -133,7 +155,7 @@ class MainAppBar extends StatelessWidget {
                 disabledBorder: _buildOutLineInputBorder(),
                 enabledBorder: _buildOutLineInputBorder(),
                 focusedBorder: _buildOutLineInputBorder(),
-                hintText: '정기구독 고객, 구매 시 5% 적립',
+                hintText: '스타터 패키지 20% 할인',
                 contentPadding: EdgeInsets.only(top: 1, left: 10),
                 hintStyle: TextStyle(
                   fontSize: 14,
@@ -188,7 +210,13 @@ class MainAppBar extends StatelessWidget {
             fontSize: 18,
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          if (text == '스타터') {
+            Get.toNamed('/starter');
+          } else if (text == '루이존') {
+            Get.toNamed('/louiszone');
+          }
+        },
       ),
     );
   }

@@ -20,10 +20,22 @@ class HomeScreen extends StatelessWidget {
           children: [
             MainAppBar(),
             BigSlider(),
-            SizedBox(height: 100),
-            ProductsSlider(
-              mainText: '베스트 상품',
-              subText: '이번주 가장 인기있는 상품이에요',
+            Stack(
+              children: [
+                Visibility(
+                  visible: true,
+                  child: Container(),
+                ),
+                Column(
+                  children: [
+                    SizedBox(height: 100),
+                    ProductsSlider(
+                      mainText: '베스트 상품',
+                      subText: '이번주 가장 인기있는 상품이에요',
+                    ),
+                  ],
+                ),
+              ],
             ),
             SizedBox(height: 100),
             CurationExplain(),

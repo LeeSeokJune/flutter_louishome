@@ -8,11 +8,6 @@ class BottomBar extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Divider(
-          indent: 20,
-          endIndent: 20,
-          color: Colors.grey,
-        ),
         SizedBox(height: 30),
         Center(
           child: Container(
@@ -22,9 +17,6 @@ class BottomBar extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: Icon(Icons.arrow_upward_rounded),
-                ),
-                Divider(
-                  color: Colors.grey,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
