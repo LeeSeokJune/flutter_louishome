@@ -6,5 +6,6 @@ class InitBinding extends Bindings {
   @override
   void dependencies() {
     Get.put(ProductController(), permanent: true);
+    Get.put(MainHoverController());
   }
 }

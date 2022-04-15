@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:html' as html;
 
-class MainAppBar extends StatelessWidget {
+import 'package:louishome_website/controller/main_hover_controller.dart';
+
+class MainAppBar extends GetView<MainHoverController> {
   MainAppBar({Key? key}) : super(key: key);
   var pageName = ['NOTICE', '장바구니', '로그인', '회원가입'];
   @override
@@ -132,9 +134,11 @@ class MainAppBar extends StatelessWidget {
                 ),
               ],
             ),
-            onTap: () {},
-            onHover: (value) {
-              print(value.toString());
+            onTap: () {
+              controller.setHoverBool(!controller.onHoverBool.value);
+            },
+            onFocusChange: (v) {
+              controller.setHoverBool(!controller.onHoverBool.value);
             },
           ),
           SizedBox(width: 50),
