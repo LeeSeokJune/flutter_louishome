@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:louishome_website/screens/components/bottomBar.dart';
-import 'package:louishome_website/screens/components/mainAppBar.dart';
+import 'package:louishome_website/screens/components/topAppBar.dart';
 
 class ShoppingCartScreen extends StatelessWidget {
   const ShoppingCartScreen({Key? key}) : super(key: key);
@@ -10,12 +10,10 @@ class ShoppingCartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            MainAppBar(),
-            CartForm(),
-          ],
+        child: SingleChildScrollView(
+          child: TopAppBar(
+            children: CartForm(),
+          ),
         ),
       ),
     );

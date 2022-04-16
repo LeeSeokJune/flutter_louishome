@@ -3,12 +3,35 @@ import 'package:get/get.dart';
 import 'dart:html' as html;
 
 import 'package:louishome_website/controller/main_hover_controller.dart';
+import 'package:louishome_website/screens/components/categoryBoard.dart';
 
-class MainAppBar extends GetView<MainHoverController> {
-  MainAppBar({Key? key}) : super(key: key);
+class TopAppBar extends GetView<MainHoverController> {
+  Widget children;
+  TopAppBar({Key? key, required this.children}) : super(key: key);
   var pageName = ['NOTICE', '장바구니', '로그인', '회원가입'];
   @override
   Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          mainAppBar(context),
+          Obx(
+            () => Stack(
+              children: [
+                children,
+                Visibility(
+                  visible: controller.onHoverBool.value,
+                  child: CategoryBoard(),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget mainAppBar(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -88,7 +111,6 @@ class MainAppBar extends GetView<MainHoverController> {
         ),
         Divider(),
         Center(child: Category()),
-        Divider(),
       ],
     );
   }

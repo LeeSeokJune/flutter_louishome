@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:louishome_website/controller/product_controller.dart';
+
 import 'package:louishome_website/data/petfood.dart';
-import 'package:louishome_website/screens/components/mainAppBar.dart';
+import 'package:louishome_website/screens/components/topAppBar.dart';
 
 class ProductScreen extends GetView<ProductController> {
   ProductScreen({Key? key}) : super(key: key);
@@ -14,25 +15,32 @@ class ProductScreen extends GetView<ProductController> {
       body: Center(
         child: Column(
           children: [
-            MainAppBar(),
-            Container(
-              width: 1320,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'images/petfood/$id.png',
-                    width: 600,
-                    height: 600,
-                  ),
-                  SizedBox(width: 100),
-                  ProductExplain(),
-                ],
-              ),
-            ),
+            TopAppBar(children: ProductScreenWidget()),
           ],
         ),
       ),
+    );
+  }
+
+  Widget ProductScreenWidget() {
+    return Column(
+      children: [
+        Container(
+          width: 1320,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/petfood/$id.png',
+                width: 600,
+                height: 600,
+              ),
+              SizedBox(width: 100),
+              ProductExplain(),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
