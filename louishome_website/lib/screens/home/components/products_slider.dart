@@ -1,15 +1,17 @@
-import 'dart:html';
-
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:louishome_website/controller/products_controller.dart';
+
+import '../../components/restApi.dart';
 
 class ProductsSlider extends StatelessWidget {
   String mainText;
   String subText;
   ProductsSlider({Key? key, required this.mainText, required this.subText})
       : super(key: key);
-
+  ProductsController _controller = Get.put(ProductsController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,7 +57,7 @@ class ProductsSlider extends StatelessWidget {
                                 padding: EdgeInsets.only(top: 6.0),
                                 child: Column(
                                   children: [
-                                    Text("아이템 이름"),
+                                    Text("asdf"),
                                     Text('가격'),
                                   ],
                                 ),

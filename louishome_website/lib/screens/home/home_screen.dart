@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:louishome_website/controller/main_hover_controller.dart';
 import 'package:louishome_website/screens/components/bottomBar.dart';
+import 'package:louishome_website/screens/components/restApi.dart';
+
 import 'package:louishome_website/screens/components/topAppBar.dart';
 import 'package:louishome_website/screens/home/components/best_product.dart';
 import 'package:louishome_website/screens/home/components/big_slider.dart';
@@ -12,7 +16,7 @@ import 'package:louishome_website/screens/home/components/products_slider.dart';
 import 'package:louishome_website/screens/home/components/slider_4products.dart';
 
 class HomeScreen extends GetView<MainHoverController> {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
