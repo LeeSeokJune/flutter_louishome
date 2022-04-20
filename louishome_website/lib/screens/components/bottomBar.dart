@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:louishome_website/data/constants.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class BottomBar extends StatelessWidget {
         SizedBox(height: 30),
         Center(
           child: Container(
-            width: 1320,
+            width: basicWidth,
             child: Column(
               children: [
                 Align(
@@ -42,7 +43,7 @@ class BottomBar extends StatelessWidget {
         SizedBox(height: 20),
         Center(
           child: Container(
-            width: 1320,
+            width: basicWidth,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [

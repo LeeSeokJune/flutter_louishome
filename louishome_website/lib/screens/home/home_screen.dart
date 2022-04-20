@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:louishome_website/controller/main_hover_controller.dart';
+import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/screens/components/bottomBar.dart';
 import 'package:louishome_website/screens/components/restApi.dart';
 
@@ -69,7 +70,7 @@ class HomeScreen extends GetView<MainHoverController> {
           color: Colors.white,
           child: Center(
             child: Container(
-              width: 1320,
+              width: basicWidth,
               child: Row(
                 children: [
                   Column(

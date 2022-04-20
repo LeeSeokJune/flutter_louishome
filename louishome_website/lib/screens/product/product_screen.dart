@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:louishome_website/controller/product_controller.dart';
+import 'package:louishome_website/data/constants.dart';
 
 import 'package:louishome_website/data/petfood.dart';
 import 'package:louishome_website/screens/components/topAppBar.dart';
@@ -26,7 +27,7 @@ class ProductScreen extends GetView<ProductController> {
     return Column(
       children: [
         Container(
-          width: 1320,
+          width: basicWidth,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'dart:html' as html;
 
 import 'package:louishome_website/controller/main_hover_controller.dart';
+import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/screens/components/categoryBoard.dart';
 
 class TopAppBar extends GetView<MainHoverController> {
@@ -66,7 +67,7 @@ class TopAppBar extends GetView<MainHoverController> {
           padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
           child: Center(
             child: Container(
-              width: 1320,
+              width: basicWidth,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -91,7 +92,7 @@ class TopAppBar extends GetView<MainHoverController> {
         Divider(),
         Center(
           child: Container(
-            width: 1320,
+            width: basicWidth,
             child: Row(
               children: [
                 SizedBox(width: 40),
@@ -171,7 +172,7 @@ class TopAppBar extends GetView<MainHoverController> {
           CategoryButton('특가'),
           CategoryButton('스타터'),
           CategoryButton('루이존'),
-          SizedBox(width: 90),
+          SizedBox(width: 30),
           Container(
             width: 350,
             height: 30,
@@ -203,7 +204,7 @@ class TopAppBar extends GetView<MainHoverController> {
               color: Colors.white,
             ),
           ),
-          SizedBox(width: 50),
+          SizedBox(width: 30),
           Icon(
             Icons.star_border,
             size: 30,

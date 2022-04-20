@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:louishome_website/data/constants.dart';
 
 class BestProduct extends StatelessWidget {
   const BestProduct({Key? key}) : super(key: key);
@@ -6,7 +7,7 @@ class BestProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 1320,
+      width: basicWidth,
       child: Column(
         children: [
           Text(
@@ -18,7 +19,7 @@ class BestProduct extends StatelessWidget {
           ),
           SizedBox(height: 50),
           Container(
-            width: 1320,
+            width: basicWidth,
             height: 1200,
             child: GridView.builder(
               shrinkWrap: true,

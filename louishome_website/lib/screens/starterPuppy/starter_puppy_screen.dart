@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/screens/components/topAppBar.dart';
 
 class StarterPuppyScreen extends StatelessWidget {
@@ -22,11 +23,11 @@ class StarterPuppyScreen extends StatelessWidget {
       children: [
         SizedBox(height: 50),
         Container(
-          width: 1320,
+          width: basicWidth,
           child: Column(
             children: [
               Container(
-                width: 1320,
+                width: basicWidth,
                 height: 220,
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.black)),

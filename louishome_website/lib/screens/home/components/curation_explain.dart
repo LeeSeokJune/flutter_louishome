@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:louishome_website/data/constants.dart';
 
 class CurationExplain extends StatelessWidget {
   const CurationExplain({Key? key}) : super(key: key);
@@ -6,7 +7,7 @@ class CurationExplain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 1320,
+      width: basicWidth,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

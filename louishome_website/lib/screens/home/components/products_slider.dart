@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:louishome_website/controller/products_controller.dart';
+import 'package:louishome_website/data/constants.dart';
 
 import '../../components/restApi.dart';
 
@@ -15,7 +16,7 @@ class ProductsSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 1320,
+      width: basicWidth,
       child: Column(
         children: [
           Text(

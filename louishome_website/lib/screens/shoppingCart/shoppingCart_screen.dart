@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/screens/components/bottomBar.dart';
 import 'package:louishome_website/screens/components/topAppBar.dart';
 
@@ -21,7 +22,7 @@ class ShoppingCartScreen extends StatelessWidget {
 
   Widget CartForm() {
     return Container(
-      width: 1320,
+      width: basicWidth,
       child: Padding(
         padding: const EdgeInsets.all(50),
         child: Column(

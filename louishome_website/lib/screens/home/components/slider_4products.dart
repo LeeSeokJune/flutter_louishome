@@ -1,5 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:louishome_website/data/constants.dart';
 
 class Slider4Products extends StatelessWidget {
   String mainText;
@@ -10,7 +11,7 @@ class Slider4Products extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 1320,
+      width: basicWidth,
       child: Column(
         children: [
           Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:louishome_website/data/constants.dart';
 
 class Instagram extends StatelessWidget {
   const Instagram({Key? key}) : super(key: key);
@@ -6,7 +7,7 @@ class Instagram extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 1320,
+      width: basicWidth,
       child: Column(
         children: [
           Row(
@@ -32,7 +33,7 @@ class Instagram extends StatelessWidget {
           ),
           SizedBox(height: 50),
           Container(
-            width: 1320,
+            width: basicWidth,
             height: 550,
             child: GridView.builder(
               shrinkWrap: true,

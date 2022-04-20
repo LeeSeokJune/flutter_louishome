@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/screens/components/bottomBar.dart';
 
 import 'package:louishome_website/screens/components/puppy_kitten.dart';
@@ -36,7 +37,7 @@ class LouisZone extends StatelessWidget {
 
   Widget ExplainCare() {
     return Container(
-      width: 1320,
+      width: basicWidth,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
