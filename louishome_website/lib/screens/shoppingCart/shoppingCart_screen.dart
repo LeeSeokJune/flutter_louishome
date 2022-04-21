@@ -13,7 +13,7 @@ class ShoppingCartScreen extends StatelessWidget {
       body: Center(
         child: SingleChildScrollView(
           child: TopAppBar(
-            children: CartForm(),
+            child: CartForm(),
           ),
         ),
       ),

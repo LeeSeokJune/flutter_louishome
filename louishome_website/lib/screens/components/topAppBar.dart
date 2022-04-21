@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:html' as html;
-
-import 'package:louishome_website/controller/main_hover_controller.dart';
+import 'package:louishome_website/controller/category_controller.dart';
 import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/screens/components/categoryBoard.dart';
 
-class TopAppBar extends GetView<MainHoverController> {
-  Widget children;
-  TopAppBar({Key? key, required this.children}) : super(key: key);
+class TopAppBar extends StatelessWidget {
+  final categoryController = Get.put(CategoryController());
+
+  Widget child;
+  TopAppBar({Key? key, required this.child}) : super(key: key);
   var pageName = ['NOTICE', '장바구니', '로그인', '회원가입'];
   @override
   Widget build(BuildContext context) {
@@ -19,10 +20,15 @@ class TopAppBar extends GetView<MainHoverController> {
           Obx(
             () => Stack(
               children: [
-                children,
-                Visibility(
-                  visible: controller.onHoverBool.value,
-                  child: CategoryBoard(),
+                child,
+                Positioned(
+                  left: context.width < basicWidth
+                      ? 50
+                      : (context.width - basicWidth + 50) / 2,
+                  child: Visibility(
+                    visible: categoryController.onHoverBool.value,
+                    child: CategoryBoard(),
+                  ),
                 ),
               ],
             ),
@@ -39,7 +45,7 @@ class TopAppBar extends GetView<MainHoverController> {
         Container(
           width: context.width,
           height: 45,
-          color: Color.fromRGBO(0, 36, 79, 1),
+          color: louisColor,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -157,12 +163,17 @@ class TopAppBar extends GetView<MainHoverController> {
                 ),
               ],
             ),
+            onHover: (value) {
+              categoryController.setHoverBool(value);
+            },
             onTap: () {
-              controller.setHoverBool(!controller.onHoverBool.value);
+              categoryController
+                  .setHoverBool(!categoryController.onHoverBool.value);
             },
-            onFocusChange: (v) {
-              controller.setHoverBool(!controller.onHoverBool.value);
-            },
+            // onFocusChange: (v) {
+            //   categoryController
+            //       .setHoverBool(!categoryController.onHoverBool.value);
+            // },
           ),
           SizedBox(width: 50),
           CategoryButton('강아지'),

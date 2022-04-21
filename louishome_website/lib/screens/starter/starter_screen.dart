@@ -12,7 +12,7 @@ class StarterScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TopAppBar(children: StartScreenWidget()),
+            TopAppBar(child: StartScreenWidget()),
           ],
         ),
       ),

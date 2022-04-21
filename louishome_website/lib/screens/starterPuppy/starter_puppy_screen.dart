@@ -11,7 +11,7 @@ class StarterPuppyScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TopAppBar(children: StarterPuppuyScreenWidget()),
+            TopAppBar(child: StarterPuppuyScreenWidget()),
           ],
         ),
       ),

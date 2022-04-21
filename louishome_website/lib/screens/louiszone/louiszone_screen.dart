@@ -15,7 +15,7 @@ class LouisZone extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TopAppBar(children: LouisZoneWidget(context)),
+            TopAppBar(child: LouisZoneWidget(context)),
           ],
         ),
       ),

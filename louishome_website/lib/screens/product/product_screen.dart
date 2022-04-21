@@ -16,7 +16,7 @@ class ProductScreen extends GetView<ProductController> {
       body: Center(
         child: Column(
           children: [
-            TopAppBar(children: ProductScreenWidget()),
+            TopAppBar(child: ProductScreenWidget()),
           ],
         ),
       ),
