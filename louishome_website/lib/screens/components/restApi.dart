@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:louishome_website/data/product.dart';
+import 'package:louishome_website/models/product.dart';
 import 'package:http/http.dart' as http;
 
 class HttpApi {

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'dart:html' as html;
 import 'package:louishome_website/controller/category_controller.dart';
 import 'package:louishome_website/data/constants.dart';
+import 'package:louishome_website/login/login_screen.dart';
 import 'package:louishome_website/screens/components/categoryBoard.dart';
 
 class TopAppBar extends StatelessWidget {
@@ -134,6 +135,10 @@ class TopAppBar extends StatelessWidget {
       onTap: () {
         if (text == '장바구니') {
           Get.toNamed('/shopping_cart');
+        } else if (text == '로그인') {
+          Get.toNamed('/login');
+        } else if (text == '회원가입') {
+          Get.toNamed('/register');
         }
       },
     );

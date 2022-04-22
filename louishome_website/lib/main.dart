@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:louishome_website/binding/init_binding.dart';
+import 'package:louishome_website/login/login_screen.dart';
+import 'package:louishome_website/register/register_screen.dart';
 import 'package:louishome_website/screens/home/home_screen.dart';
 import 'package:louishome_website/screens/louiszone/louiszone_screen.dart';
 import 'package:louishome_website/screens/product/product_screen.dart';
@@ -22,18 +24,14 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialRoute: '/',
       getPages: [
-        GetPage(
-          name: '/',
-          page: () => HomeScreen(),
-        ),
-        GetPage(
-          name: '/product/:id',
-          page: () => ProductScreen(),
-        ),
+        GetPage(name: '/', page: () => HomeScreen()),
+        GetPage(name: '/product/:id', page: () => ProductScreen()),
         GetPage(name: '/shopping_cart', page: () => ShoppingCartScreen()),
         GetPage(name: '/starter', page: () => StarterScreen()),
         GetPage(name: '/puppy', page: () => StarterPuppyScreen()),
         GetPage(name: '/louiszone', page: () => LouisZone()),
+        GetPage(name: '/login', page: () => LoginScreen()),
+        GetPage(name: '/register', page: () => RegisterScreen()),
       ],
       initialBinding: InitBinding(),
     );

@@ -23,16 +23,11 @@ class CategoryController extends GetxController {
   }
 
   void setHoverBool(bool value) {
-    if (value == false) {
-      Future.delayed(Duration(seconds: 1));
-    } else {
-      onHoverBool(value);
-    }
+    onHoverBool(value);
   }
 
   void setHoverIndexBool(bool value, int index) {
     onHoverIndexBool[index] = value;
-    print(onHoverIndexBool);
   }
 
   bool getOnHover() {
