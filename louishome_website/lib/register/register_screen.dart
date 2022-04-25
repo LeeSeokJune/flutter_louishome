@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:louishome_website/controller/user_controller.dart';
 import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/screens/components/bottomBar.dart';
+import 'package:louishome_website/screens/components/restApi.dart';
 
 import '../screens/components/topAppBar.dart';
 
 class RegisterScreen extends StatelessWidget {
+  var httpApi = HttpApi();
   RegisterScreen({Key? key}) : super(key: key);
   var userController = Get.put(UserController());
   @override
@@ -152,6 +154,7 @@ class RegisterScreen extends StatelessWidget {
           onTap: () {
             userController.formKey.value.currentState!.save();
             print(userController.user.value);
+            httpApi.registerUser({'id': 'asdf', 'password': '1234'});
           },
         ),
       ],
