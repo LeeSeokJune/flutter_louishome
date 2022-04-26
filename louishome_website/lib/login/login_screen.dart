@@ -4,9 +4,11 @@ import 'package:louishome_website/controller/user_controller.dart';
 import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/screens/components/bottomBar.dart';
 
+import '../screens/components/restApi.dart';
 import '../screens/components/topAppBar.dart';
 
 class LoginScreen extends StatelessWidget {
+  var httpApi = HttpApi();
   LoginScreen({Key? key}) : super(key: key);
   var userController = Get.put(UserController());
   @override
@@ -107,7 +109,16 @@ class LoginScreen extends StatelessWidget {
             ),
             onTap: () {
               userController.formKey.value.currentState!.save();
-              print(userController.user.value);
+              httpApi.loginUser({
+                'user_id': userController.user.value.id,
+                'user_password': userController.user.value.password,
+              }).then((value) {
+                if (value == 'done') {
+                  Get.toNamed('/');
+                } else {
+                  Get.snackbar('로그인 실패', '아이디 혹은 비밀번호가 잘못되었습니다.');
+                }
+              });
             },
           ),
         ],

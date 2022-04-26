@@ -2,12 +2,11 @@ import 'dart:convert';
 
 import 'package:louishome_website/models/product.dart';
 import 'package:http/http.dart' as http;
-import 'package:louishome_website/models/user.dart';
 
 class HttpApi {
   var client = http.Client();
   Future<List<Product>> getProducts() async {
-    var url = Uri.parse('http://3.143.112.117:8000/products/getproducts');
+    var url = Uri.parse('http://3.143.112.117:8000/products/items');
     var response = await client.get(url);
     var a = jsonDecode(utf8.decode(response.bodyBytes));
     //print(a[0]['name']);
@@ -23,7 +22,7 @@ class HttpApi {
   }
 
   Future<dynamic> loginUser(var data) async {
-    var url = Uri.parse('http://3.143.112.117:8000/products/user');
+    var url = Uri.parse('http://3.143.112.117:8000/products/user/0');
 
     var response = await client.post(url, body: data);
     var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
@@ -31,7 +30,8 @@ class HttpApi {
   }
 
   Future<dynamic> registerUser(var data) async {
-    var url = Uri.parse('http://3.143.112.117:8000/products/user');
+    print('register');
+    var url = Uri.parse('http://3.143.112.117:8000/products/user/1');
 
     var response = await client.post(url, body: data);
     var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
