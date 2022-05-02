@@ -113,10 +113,11 @@ class LoginScreen extends StatelessWidget {
                 'user_id': userController.user.value.id,
                 'user_password': userController.user.value.password,
               }).then((value) {
-                if (value == 'done') {
-                  Get.toNamed('/');
-                } else {
+                if (value == 'fail') {
                   Get.snackbar('로그인 실패', '아이디 혹은 비밀번호가 잘못되었습니다.');
+                } else {
+                  userController.user.value.loginBool = true;
+                  Get.toNamed('/');
                 }
               });
             },

@@ -26,6 +26,7 @@ class HttpApi {
 
     var response = await client.post(url, body: data);
     var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
+    print(jsonData);
     return jsonData;
   }
 
@@ -35,7 +36,15 @@ class HttpApi {
 
     var response = await client.post(url, body: data);
     var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
-    print(data);
+
+    return jsonData;
+  }
+
+  Future<dynamic> postShoppingCart(var data) async {
+    var url = Uri.parse('http://3.143.112.117:8000/products/shoppingcart');
+    var response = await client.post(url, body: data);
+    var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
+
     return jsonData;
   }
 }

@@ -6,10 +6,14 @@ import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/data/petfood.dart';
 import 'package:louishome_website/screens/components/topAppBar.dart';
 
+import '../../controller/user_controller.dart';
+import '../components/restApi.dart';
+
 class ProductScreen extends GetView<ProductController> {
   ProductScreen({Key? key}) : super(key: key);
   var id = Get.parameters['id'];
-
+  var httpApi = HttpApi();
+  var userController = Get.put(UserController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -220,16 +224,31 @@ class ProductScreen extends GetView<ProductController> {
             ),
           ),
         ),
-        Container(
-          width: 150,
-          height: 40,
-          decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-          child: Center(
-            child: Text(
-              '장바구니',
+        InkWell(
+            child: Container(
+              width: 150,
+              height: 40,
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black)),
+              child: Center(
+                child: Text(
+                  '장바구니',
+                ),
+              ),
             ),
-          ),
-        ),
+            onTap: () {
+              //장바구니에 추가
+              // if (userController.user.value.loginBool) {
+              //   httpApi.postShoppingCart({
+              //     'item': id,
+              //     'id': userController.user.value.pk,
+              //   });
+              // }
+              httpApi.postShoppingCart({
+                'item': id,
+                'id': userController.user.value.pk,
+              });
+            }),
         Container(
           width: 150,
           height: 40,
