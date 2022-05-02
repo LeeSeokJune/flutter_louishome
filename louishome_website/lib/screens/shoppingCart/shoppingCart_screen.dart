@@ -71,16 +71,33 @@ class ShoppingCartScreen extends StatelessWidget {
               ],
             ),
             Divider(),
-            SizedBox(height: 100),
-            Center(
-              child: Icon(
-                Icons.shopping_cart_outlined,
-                color: Colors.grey,
-                size: 50,
+            Visibility(
+              visible: false,
+              child: Column(
+                children: [
+                  SizedBox(height: 100),
+                  Center(
+                    child: Icon(
+                      Icons.shopping_cart_outlined,
+                      color: Colors.grey,
+                      size: 50,
+                    ),
+                  ),
+                  Center(child: Text('장바구니가 비었습니다.')),
+                  SizedBox(height: 100),
+                ],
               ),
             ),
-            Center(child: Text('장바구니가 비었습니다.')),
-            SizedBox(height: 100),
+            //만약 장바구니가 비어있지 않다면
+            Visibility(
+              visible: true,
+              child: Column(
+                children: [
+                  Container(width: 200, height: 50, child: Text('0번째 아이템')),
+                  Container(width: 200, height: 50, child: Text('1번째 아이템'))
+                ],
+              ),
+            ),
             Divider(),
             SizedBox(height: 30),
             Center(

@@ -8,8 +8,8 @@ class UserController extends GetxController {
 
   void getUser(var data) {
     user.value.pk = data['id'];
-    user.value.id = data['user_id'];
-    user.value.password = data['user_'];
-    user.value.name = data['user_name'];
+    user.value.id = data['u_id'];
+    user.value.password = data['u_pw'];
+    user.value.name = data['u_name'];
   }
 }

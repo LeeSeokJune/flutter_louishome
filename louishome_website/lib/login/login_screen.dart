@@ -110,13 +110,14 @@ class LoginScreen extends StatelessWidget {
             onTap: () {
               userController.formKey.value.currentState!.save();
               httpApi.loginUser({
-                'user_id': userController.user.value.id,
-                'user_password': userController.user.value.password,
+                'u_id': userController.user.value.id,
+                'u_password': userController.user.value.password,
               }).then((value) {
                 if (value == 'fail') {
                   Get.snackbar('로그인 실패', '아이디 혹은 비밀번호가 잘못되었습니다.');
                 } else {
                   userController.user.value.loginBool = true;
+                  userController.getUser(value);
                   Get.toNamed('/');
                 }
               });

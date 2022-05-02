@@ -245,8 +245,9 @@ class ProductScreen extends GetView<ProductController> {
               //   });
               // }
               httpApi.postShoppingCart({
-                'item': id,
-                'id': userController.user.value.pk,
+                'item': id.toString(),
+                'id': '5',
+                //'id': userController.user.value.pk.toString(),
               });
             }),
         Container(

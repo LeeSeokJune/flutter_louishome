@@ -157,9 +157,9 @@ class RegisterScreen extends StatelessWidget {
               userController.formKey.value.currentState!.save();
 
               httpApi.registerUser({
-                'user_id': userController.user.value.id,
-                'user_password': userController.user.value.password,
-                'user_name': userController.user.value.name,
+                'u_id': userController.user.value.id,
+                'u_pw': userController.user.value.password,
+                'u_name': userController.user.value.name,
               }).then(
                 (value) {
                   if (value == 'done') {
