@@ -65,7 +65,7 @@ class RegisterScreen extends StatelessWidget {
                 contentPadding: EdgeInsets.only(top: 1, left: 10),
               ),
               onSaved: (value) {
-                userController.user.value.id = value!;
+                userController.user.value.u_strid = value!;
               },
             ),
           ),
@@ -87,7 +87,7 @@ class RegisterScreen extends StatelessWidget {
                 contentPadding: EdgeInsets.only(top: 1, left: 10),
               ),
               onSaved: (value) {
-                userController.user.value.name = value!;
+                userController.user.value.u_name = value!;
               },
             ),
           ),
@@ -109,7 +109,7 @@ class RegisterScreen extends StatelessWidget {
                 contentPadding: EdgeInsets.only(top: 1, left: 10),
               ),
               onSaved: (value) {
-                userController.user.value.password = value!;
+                userController.user.value.u_pw = value!;
               },
             ),
           ),
@@ -157,9 +157,9 @@ class RegisterScreen extends StatelessWidget {
               userController.formKey.value.currentState!.save();
 
               httpApi.registerUser({
-                'u_id': userController.user.value.id,
-                'u_pw': userController.user.value.password,
-                'u_name': userController.user.value.name,
+                'u_strid': userController.user.value.u_strid,
+                'u_pw': userController.user.value.u_pw,
+                'u_name': userController.user.value.u_name,
               }).then(
                 (value) {
                   if (value == 'done') {

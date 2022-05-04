@@ -1,14 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:louishome_website/controller/shoppingcart_controller.dart';
 import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/screens/components/bottomBar.dart';
+import 'package:louishome_website/screens/components/restApi.dart';
 import 'package:louishome_website/screens/components/topAppBar.dart';
 
 class ShoppingCartScreen extends StatelessWidget {
-  const ShoppingCartScreen({Key? key}) : super(key: key);
+  ShoppingCartScreen({Key? key}) : super(key: key);
 
+  var httpApi = HttpApi();
+  var shoppingcartController = Get.put(ShoppingCartController());
+  var item = [];
   @override
   Widget build(BuildContext context) {
+    httpApi.getShoppingCart({'u_id': '5'}).then(
+      (value) => {
+        print(value),
+        if (value == 'empty')
+          {shoppingcartController.setIsEmpty(true)}
+        else
+          {
+            item = value,
+            shoppingcartController.setIsEmpty(false),
+            print(value is List),
+          }
+      },
+    );
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -71,31 +89,45 @@ class ShoppingCartScreen extends StatelessWidget {
               ],
             ),
             Divider(),
-            Visibility(
-              visible: false,
-              child: Column(
-                children: [
-                  SizedBox(height: 100),
-                  Center(
-                    child: Icon(
-                      Icons.shopping_cart_outlined,
-                      color: Colors.grey,
-                      size: 50,
+            Obx(
+              () => Visibility(
+                visible: shoppingcartController.cartIsEmpty.value,
+                child: Column(
+                  children: [
+                    SizedBox(height: 100),
+                    Center(
+                      child: Icon(
+                        Icons.shopping_cart_outlined,
+                        color: Colors.grey,
+                        size: 50,
+                      ),
                     ),
-                  ),
-                  Center(child: Text('장바구니가 비었습니다.')),
-                  SizedBox(height: 100),
-                ],
+                    Center(child: Text('장바구니가 비었습니다.')),
+                    SizedBox(height: 100),
+                  ],
+                ),
               ),
             ),
-            //만약 장바구니가 비어있지 않다면
-            Visibility(
-              visible: true,
-              child: Column(
-                children: [
-                  Container(width: 200, height: 50, child: Text('0번째 아이템')),
-                  Container(width: 200, height: 50, child: Text('1번째 아이템'))
-                ],
+            // 만약 장바구니가 비어있지 않다면
+            Obx(
+              () => Visibility(
+                visible: !shoppingcartController.cartIsEmpty.value,
+                child: Column(
+                  children: [
+                    for (var i = 0; i < item.length; i++)
+                      Container(
+                        child: Row(
+                          children: [
+                            Text('${item[i]['p_id']} 번째 상품'),
+                            SizedBox(width: 50),
+                            Text('${item[i]['s_count']} 개'),
+                            SizedBox(width: 50),
+                            Text('이제 여기에 사진과 가격 등의 정보들을 채워넣으면 된다!'),
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ),
             Divider(),

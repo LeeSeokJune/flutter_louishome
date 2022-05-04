@@ -5,10 +5,11 @@ import 'package:louishome_website/controller/category_controller.dart';
 import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/login/login_screen.dart';
 import 'package:louishome_website/screens/components/categoryBoard.dart';
+import 'package:louishome_website/screens/components/restApi.dart';
 
 class TopAppBar extends StatelessWidget {
   final categoryController = Get.put(CategoryController());
-
+  var httpApi = HttpApi();
   Widget child;
   TopAppBar({Key? key, required this.child}) : super(key: key);
   var pageName = ['NOTICE', '장바구니', '로그인', '회원가입'];

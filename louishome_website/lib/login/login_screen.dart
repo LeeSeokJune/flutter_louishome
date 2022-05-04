@@ -61,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                 contentPadding: EdgeInsets.only(top: 1, left: 10),
               ),
               onSaved: (value) {
-                userController.user.value.id = value!;
+                userController.user.value.u_strid = value!;
               },
             ),
           ),
@@ -84,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                 contentPadding: EdgeInsets.only(top: 1, left: 10),
               ),
               onSaved: (value) {
-                userController.user.value.password = value!;
+                userController.user.value.u_pw = value!;
               },
             ),
           ),
@@ -110,12 +110,13 @@ class LoginScreen extends StatelessWidget {
             onTap: () {
               userController.formKey.value.currentState!.save();
               httpApi.loginUser({
-                'u_id': userController.user.value.id,
-                'u_password': userController.user.value.password,
+                'u_strid': userController.user.value.u_strid,
+                'u_pw': userController.user.value.u_pw,
               }).then((value) {
                 if (value == 'fail') {
                   Get.snackbar('로그인 실패', '아이디 혹은 비밀번호가 잘못되었습니다.');
                 } else {
+                  print('asdf');
                   userController.user.value.loginBool = true;
                   userController.getUser(value);
                   Get.toNamed('/');

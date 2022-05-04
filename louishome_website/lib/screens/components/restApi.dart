@@ -42,10 +42,19 @@ class HttpApi {
   }
 
   Future<dynamic> postShoppingCart(var data) async {
-    var url = Uri.parse(baseUrl + 'user/shoppingcart');
+    var url = Uri.parse(baseUrl + 'shoppingcart/shoppingcart');
     var response = await client.post(url, body: data);
     var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
 
+    return jsonData;
+  }
+
+  Future<dynamic> getShoppingCart(var data) async {
+    var url = Uri.parse(baseUrl + 'shoppingcart/shoppingcartdetail');
+    var response = await client.post(url, body: data);
+    var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
+
+    print(jsonData[0]);
     return jsonData;
   }
 }

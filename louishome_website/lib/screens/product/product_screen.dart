@@ -45,6 +45,7 @@ class ProductScreen extends GetView<ProductController> {
             ],
           ),
         ),
+        Review(),
       ],
     );
   }
@@ -237,17 +238,9 @@ class ProductScreen extends GetView<ProductController> {
               ),
             ),
             onTap: () {
-              //장바구니에 추가
-              // if (userController.user.value.loginBool) {
-              //   httpApi.postShoppingCart({
-              //     'item': id,
-              //     'id': userController.user.value.pk,
-              //   });
-              // }
               httpApi.postShoppingCart({
-                'item': id.toString(),
-                'id': '5',
-                //'id': userController.user.value.pk.toString(),
+                'p_id': id.toString(),
+                'u_id': '5',
               });
             }),
         Container(
@@ -267,6 +260,42 @@ class ProductScreen extends GetView<ProductController> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget Review() {
+    return Container(
+      width: basicWidth,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                '구매평',
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(width: 20),
+              Container(
+                width: 20,
+                height: 20,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: Colors.grey,
+                ),
+                child: Center(
+                  child: Text(
+                    '0',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          InkWell(
+            child: Container(),
+          )
+        ],
+      ),
     );
   }
 }
