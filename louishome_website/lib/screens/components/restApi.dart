@@ -57,4 +57,20 @@ class HttpApi {
     print(jsonData[0]);
     return jsonData;
   }
+
+  Future<dynamic> postReview(var data, String p_id) async {
+    var url = Uri.parse(baseUrl + 'product/review/' + p_id);
+    var response = await client.post(url, body: data);
+    var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
+    print(jsonData);
+    return jsonData;
+  }
+
+  Future<dynamic> getReview(String p_id) async {
+    var url = Uri.parse(baseUrl + 'product/review/' + p_id);
+    var response = await client.get(url);
+    var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
+    print(jsonData);
+    return jsonData;
+  }
 }

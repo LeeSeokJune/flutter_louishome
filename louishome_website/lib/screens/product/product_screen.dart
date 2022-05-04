@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:louishome_website/controller/product_controller.dart';
+import 'package:louishome_website/controller/review_controller.dart';
 import 'package:louishome_website/data/constants.dart';
 
 import 'package:louishome_website/data/petfood.dart';
+import 'package:louishome_website/screens/components/bottomBar.dart';
 import 'package:louishome_website/screens/components/topAppBar.dart';
 
 import '../../controller/user_controller.dart';
@@ -11,14 +13,22 @@ import '../components/restApi.dart';
 
 class ProductScreen extends GetView<ProductController> {
   ProductScreen({Key? key}) : super(key: key);
-  var id = Get.parameters['id'];
+  var p_id = Get.parameters['id'];
   var httpApi = HttpApi();
   var userController = Get.put(UserController());
+  var reviewController = Get.put(ReviewController());
+  var reviewList = [];
   @override
   Widget build(BuildContext context) {
+    httpApi.getReview(p_id!).then((value) {
+      reviewList = value;
+      if (reviewList.length > 0) {
+        reviewController.setReviewVisible(true);
+      }
+    });
     return Scaffold(
       body: Center(
-        child: Column(
+        child: ListView(
           children: [
             TopAppBar(child: ProductScreenWidget()),
           ],
@@ -36,7 +46,7 @@ class ProductScreen extends GetView<ProductController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
-                'images/petfood/$id.png',
+                'images/petfood/$p_id.png',
                 width: 600,
                 height: 600,
               ),
@@ -46,6 +56,7 @@ class ProductScreen extends GetView<ProductController> {
           ),
         ),
         Review(),
+        BottomBar(),
       ],
     );
   }
@@ -57,7 +68,7 @@ class ProductScreen extends GetView<ProductController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            petfood[int.parse(id!)]['이름'].toString(),
+            petfood[int.parse(p_id!)]['이름'].toString(),
             style: TextStyle(
               fontSize: 30,
             ),
@@ -66,7 +77,7 @@ class ProductScreen extends GetView<ProductController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                petfood[int.parse(id!)]['소매가'].toString() + '원',
+                petfood[int.parse(p_id!)]['소매가'].toString() + '원',
                 style: TextStyle(
                   fontSize: 30,
                 ),
@@ -176,7 +187,7 @@ class ProductScreen extends GetView<ProductController> {
                       ),
                       Obx(
                         () => Text((controller.productIndex.value *
-                                    int.parse(petfood[int.parse(id!)]['소매가']!
+                                    int.parse(petfood[int.parse(p_id!)]['소매가']!
                                         .replaceAll(',', '')))
                                 .toString() +
                             '원'),
@@ -195,7 +206,7 @@ class ProductScreen extends GetView<ProductController> {
                 Text('총 상품금액(${controller.productIndex.value}개)'),
                 Text(
                   (controller.productIndex.value *
-                              int.parse(petfood[int.parse(id!)]['소매가']!
+                              int.parse(petfood[int.parse(p_id!)]['소매가']!
                                   .replaceAll(',', '')))
                           .toString() +
                       '원',
@@ -239,7 +250,7 @@ class ProductScreen extends GetView<ProductController> {
             ),
             onTap: () {
               httpApi.postShoppingCart({
-                'p_id': id.toString(),
+                'p_id': p_id.toString(),
                 'u_id': '5',
               });
             }),
@@ -264,37 +275,96 @@ class ProductScreen extends GetView<ProductController> {
   }
 
   Widget Review() {
-    return Container(
-      width: basicWidth,
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Text(
-                '구매평',
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(width: 20),
-              Container(
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  color: Colors.grey,
+    return Form(
+      key: reviewController.formKey.value,
+      child: Container(
+        width: basicWidth,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(
+                  '구매평',
+                  style: TextStyle(fontSize: 20),
                 ),
-                child: Center(
-                  child: Text(
-                    '0',
-                    style: TextStyle(color: Colors.white),
+                SizedBox(width: 20),
+                Container(
+                  width: 20,
+                  height: 20,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.grey,
+                  ),
+                  child: Center(
+                    child: Text(
+                      '0',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
+              ],
+            ),
+            SizedBox(height: 30),
+            Container(
+              width: basicWidth - 200,
+              height: 50,
+              decoration: BoxDecoration(
+                border: Border.all(color: louisColor),
               ),
-            ],
-          ),
-          InkWell(
-            child: Container(),
-          )
-        ],
+              child: TextFormField(
+                onSaved: (value) {
+                  reviewController.setContent(value);
+                },
+              ),
+            ),
+            SizedBox(height: 30),
+            InkWell(
+              child: Container(
+                width: 100,
+                height: 30,
+                decoration: BoxDecoration(
+                  border: Border.all(color: louisColor),
+                ),
+                child: Center(
+                  child: Text('구매평 작성'),
+                ),
+              ),
+              onTap: () {
+                reviewController.formKey.value.currentState!.save();
+                httpApi.postReview({
+                  'p_id': p_id,
+                  'u_id': '5',
+                  'r_title': 'asdf',
+                  'r_content': reviewController.content.value,
+                  'r_help': '0',
+                }, p_id!);
+              },
+            ),
+            SizedBox(height: 30),
+            Obx(
+              () => Visibility(
+                visible: reviewController.reviewVisible.value,
+                child: Column(
+                  children: [
+                    for (var i = 0; i < reviewList.length; i++)
+                      Container(
+                        child: Row(
+                          children: [
+                            Text('${i + 1}번째 리뷰'),
+                            SizedBox(width: 20),
+                            Text("${reviewList[i]['r_content']}"),
+                            SizedBox(width: 20),
+                            Text("${reviewList[i]['r_date']}에 작성된 리뷰"),
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
