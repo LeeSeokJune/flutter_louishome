@@ -4,8 +4,7 @@ import 'package:louishome_website/controller/user_controller.dart';
 import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/screens/components/bottomBar.dart';
 import 'package:louishome_website/screens/components/restApi.dart';
-
-import '../screens/components/topAppBar.dart';
+import '../components/topAppBar.dart';
 
 class RegisterScreen extends StatelessWidget {
   var httpApi = HttpApi();

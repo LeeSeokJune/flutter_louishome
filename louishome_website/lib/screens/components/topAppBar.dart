@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:html' as html;
 import 'package:louishome_website/controller/category_controller.dart';
 import 'package:louishome_website/data/constants.dart';
-import 'package:louishome_website/login/login_screen.dart';
 import 'package:louishome_website/screens/components/categoryBoard.dart';
 import 'package:louishome_website/screens/components/restApi.dart';
 
@@ -65,7 +63,7 @@ class TopAppBar extends StatelessWidget {
                   size: 15,
                 ),
                 onTap: () {
-                  html.window.open('http://3.17.203.194/#/', '_self');
+                  Get.toNamed('/quration');
                 },
               ),
             ],
@@ -106,7 +104,7 @@ class TopAppBar extends StatelessWidget {
                 SizedBox(width: 40),
                 InkWell(
                   child: Image.asset(
-                    'images/png/루이스홈_sg2_color.png',
+                    'images/png/루이스홈 가로형 로고 네이비 수정.png',
                     width: 200,
                     height: 50,
                   ),

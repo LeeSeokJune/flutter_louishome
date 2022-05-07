@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:louishome_website/binding/init_binding.dart';
-import 'package:louishome_website/login/login_screen.dart';
-import 'package:louishome_website/register/register_screen.dart';
 import 'package:louishome_website/screens/home/home_screen.dart';
+import 'package:louishome_website/screens/login/login_screen.dart';
 import 'package:louishome_website/screens/louiszone/louiszone_screen.dart';
 import 'package:louishome_website/screens/product/product_screen.dart';
+import 'package:louishome_website/screens/quration/quration_screen.dart';
+import 'package:louishome_website/screens/register/register_screen.dart';
 import 'package:louishome_website/screens/shoppingCart/shoppingCart_screen.dart';
 import 'package:louishome_website/screens/starter/starter_screen.dart';
 import 'package:louishome_website/screens/starterPuppy/starter_puppy_screen.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/louiszone', page: () => LouisZone()),
         GetPage(name: '/login', page: () => LoginScreen()),
         GetPage(name: '/register', page: () => RegisterScreen()),
+        GetPage(name: '/quration', page: () => QurationScreen()),
       ],
       initialBinding: InitBinding(),
     );

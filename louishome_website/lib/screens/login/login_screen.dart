@@ -4,8 +4,8 @@ import 'package:louishome_website/controller/user_controller.dart';
 import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/screens/components/bottomBar.dart';
 
-import '../screens/components/restApi.dart';
-import '../screens/components/topAppBar.dart';
+import '../components/restApi.dart';
+import '../components/topAppBar.dart';
 
 class LoginScreen extends StatelessWidget {
   var httpApi = HttpApi();
