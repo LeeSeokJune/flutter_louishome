@@ -1,11 +1,8 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:louishome_website/controller/products_controller.dart';
 import 'package:louishome_website/data/constants.dart';
-
-import '../../components/restApi.dart';
 
 class ProductsSlider extends StatelessWidget {
   String mainText;

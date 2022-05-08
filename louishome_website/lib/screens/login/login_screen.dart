@@ -26,7 +26,6 @@ class LoginScreen extends StatelessWidget {
 
   Widget LoginScreenWidget() {
     return Container(
-      width: basicWidth,
       child: Column(
         children: [
           SizedBox(height: 100),
