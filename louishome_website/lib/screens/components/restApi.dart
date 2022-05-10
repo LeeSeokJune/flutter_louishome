@@ -1,11 +1,11 @@
 import 'dart:convert';
-
 import 'package:louishome_website/models/product.dart';
 import 'package:http/http.dart' as http;
 
 class HttpApi {
   var client = http.Client();
-  final baseUrl = 'http://3.128.190.192:8000/';
+  // final baseUrl = 'http://3.128.190.192:8000/';
+  final baseUrl = 'http://127.0.0.1:8000/';
   Future<List<Product>> getProducts() async {
     var url = Uri.parse(baseUrl + 'products/items');
     var response = await client.get(url);
@@ -15,8 +15,16 @@ class HttpApi {
   }
 
   Future<List<Product>> postProducts(var data) async {
-    var url = Uri.parse(baseUrl + 'product/getproducts');
+    var url = Uri.parse(baseUrl + 'product/items');
     var response = await client.post(url, body: data);
+    var a = jsonDecode(utf8.decode(response.bodyBytes));
+    //print(a[0]['name']);
+    return a;
+  }
+
+  Future getItem(var p_id) async {
+    var url = Uri.parse(baseUrl + 'product/item/{$p_id}');
+    var response = await client.get(url);
     var a = jsonDecode(utf8.decode(response.bodyBytes));
     //print(a[0]['name']);
     return a;
@@ -71,6 +79,14 @@ class HttpApi {
     var response = await client.get(url);
     var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
     print(jsonData);
+    return jsonData;
+  }
+
+  Future postQuration(var data) async {
+    var url = Uri.parse(baseUrl + 'product/quration');
+    var response = await client.post(url, body: data);
+    var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
+    print(jsonData[0]);
     return jsonData;
   }
 }

@@ -4,12 +4,17 @@ import 'package:louishome_website/controller/quration_controller.dart';
 import 'package:louishome_website/data/constants.dart';
 import 'package:louishome_website/data/qurationData.dart';
 import 'package:louishome_website/screens/components/bottomBar.dart';
+import 'package:louishome_website/screens/components/restApi.dart';
 import 'package:louishome_website/screens/components/topAppBar.dart';
 import 'package:get/get.dart';
+
+import 'components/filtering.dart';
 
 class QurationScreen extends StatelessWidget {
   QurationScreen({Key? key}) : super(key: key);
   var qurationController = Get.put(QurationController());
+  var httpApi = HttpApi();
+  var filtering;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,9 +68,64 @@ class QurationScreen extends StatelessWidget {
             SizedBox(height: 50),
             InputHealth(),
             SizedBox(height: 50),
+            postButton(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget postButton() {
+    return InkWell(
+      child: Container(
+        width: 200,
+        height: 50,
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 4,
+            color: louisColor,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            '사료 확인',
+            style: TextStyle(
+              fontSize: 30,
+            ),
+          ),
+        ),
+      ),
+      onTap: () {
+        qurationController.formKey.value.currentState!.save();
+        qurationController.setQurationData();
+        httpApi.postQuration({
+          'pet': qurationController.quration.value.pet,
+          'breed': qurationController.quration.value.breed,
+          'bcs': qurationController.quration.value.bcs,
+          'birthYear': qurationController.quration.value.birthYear,
+          'birthMonth': qurationController.quration.value.birthMonth,
+          'birthDay': qurationController.quration.value.birthDay,
+          'weight': qurationController.quration.value.weight,
+          'sex': qurationController.quration.value.sex,
+          'neu': qurationController.quration.value.neu,
+          'alg': qurationController.quration.value.algList,
+          'health': qurationController.quration.value.healthList,
+          'diet': qurationController.quration.value.diet,
+          'sprotein': qurationController.quration.value.sprotein,
+        }).then((petfood) {
+          filtering = Filtering();
+          if (qurationController.quration.value.pet == '강아지') {
+            petfood = filtering.filteringSize(petfood); // size 가 age 보다 먼저해야함
+          }
+          petfood = filtering.filteringDiet(petfood);
+          petfood = filtering.filteringAge(petfood);
+          petfood = filtering.filteringAlg(petfood);
+
+          petfood = filtering.filteringHealth(petfood);
+
+          Get.toNamed('/showpetfood', arguments: petfood);
+        });
+      },
     );
   }
 
