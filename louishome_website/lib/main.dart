@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:louishome_website/binding/init_binding.dart';
 import 'package:louishome_website/screens/home/home_screen.dart';
+import 'package:louishome_website/screens/item/item_screen.dart';
 import 'package:louishome_website/screens/login/login_screen.dart';
 import 'package:louishome_website/screens/louiszone/louiszone_screen.dart';
 import 'package:louishome_website/screens/product/product_screen.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/register', page: () => RegisterScreen()),
         GetPage(name: '/quration', page: () => QurationScreen()),
         GetPage(name: '/showpetfood', page: () => ShowPetfoodScreen()),
+        GetPage(name: '/item', page: () => ItemScreen()),
       ],
       initialBinding: InitBinding(),
     );

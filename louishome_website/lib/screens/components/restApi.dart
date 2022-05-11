@@ -6,8 +6,8 @@ class HttpApi {
   var client = http.Client();
   // final baseUrl = 'http://3.128.190.192:8000/';
   final baseUrl = 'http://127.0.0.1:8000/';
-  Future<List<Product>> getProducts() async {
-    var url = Uri.parse(baseUrl + 'products/items');
+  Future getProducts() async {
+    var url = Uri.parse(baseUrl + 'product/items');
     var response = await client.get(url);
     var a = jsonDecode(utf8.decode(response.bodyBytes));
     //print(a[0]['name']);
