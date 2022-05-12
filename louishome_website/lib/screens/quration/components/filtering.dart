@@ -60,7 +60,7 @@ class Filtering {
     var filteredData = [];
 
     if (qurationController.quration.value.bcs == '2' ||
-        qurationController.quration.value.algList.contains('다이어트')) {
+        qurationController.quration.value.healthList.contains('다이어트')) {
       for (var row in petfood) {
         if (row['p_small_category6'][0] == '1') {
           filteredData.add(row);
