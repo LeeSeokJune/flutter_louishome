@@ -89,4 +89,24 @@ class HttpApi {
     print(jsonData[0]);
     return jsonData;
   }
+
+  Future savePetfoodData(var data) async {
+    var url = Uri.parse(baseUrl + '');
+  }
+
+  Future updateData(var data) async {
+    var url = Uri.parse(baseUrl + 'user/pet-reg');
+    var response = await client.patch(url, body: data);
+    var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
+    print(jsonData);
+    return jsonData;
+  }
+
+  Future buy(var data) async {
+    var url = Uri.parse(baseUrl + 'order/order');
+    var response = await client.post(url, body: data);
+    var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
+    print(jsonData);
+    return jsonData;
+  }
 }
